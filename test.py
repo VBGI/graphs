@@ -15,20 +15,20 @@ def add_nodes(g, emin, x):
        if not g.node[node]['visited']:
             g.node[node]['visited'] = True
             e = g.node[node]['energy']
-            if (e * (1 - 2*x)) >= emin:
+            if (e * (1 - 2 * x)) >= emin:
                 ncounter += 1
-                newnode = '*%s/%1.3g'%(ncounter, e*(1-2*x))
-                g.add_node(newnode, {'energy': e*(1-2*x), 'visited':False})
+                newnode = '*%s/%1.3g'%(ncounter, e * (1 - 2 * x))
+                g.add_node(newnode, {'energy': e * (1 - 2 * x), 'visited':False})
                 g.add_edge(node, newnode)
-            if e*x >= emin:
+            if e * x >= emin:
                 ncounter += 1
-                newnode = '%s/%1.3g'%(ncounter, e*x)
-                g.add_node(newnode, {'energy': e*x, 'visited': False})
+                newnode = '%s/%1.3g'%(ncounter, e * x)
+                g.add_node(newnode, {'energy': e * x, 'visited': False})
                 g.add_edge(node, newnode)
-            if e*x >= emin:
+            if e * x >= emin:
                 ncounter += 1
-                newnode = '%s/%1.3g'%(ncounter, e*x)
-                g.add_node(newnode, {'energy': e*x, 'visited': False})
+                newnode = '%s/%1.3g'%(ncounter, e * x)
+                g.add_node(newnode, {'energy': e * x, 'visited': False})
                 g.add_edge(node, newnode)
 
     else:
@@ -37,9 +37,8 @@ def add_nodes(g, emin, x):
 
 
 
-
-for k in range(100):
-    add_nodes(g, 0.04, 0.3)
+for k in range(1000):
+    add_nodes(g, 0.01, 0.3)
 
 print(g.nodes())
 
